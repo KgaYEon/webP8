@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>안녕하세요 어르신!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .header {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .subheader {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+    .section-box {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .date-inputs {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .date-inputs input {
+      width: 30%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .day-control {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 5px;
+    }
+    .day-control button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      background: #fff;
+    }
+    .day-control span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .location-input input {
+      width: 90%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .weather-options {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .weather-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .weather-option img {
+      width: 40px;
+      height: 40px;
+    }
+    .weather-option span {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .selected-weather {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #444;
+      font-weight: bold;
+    }
+    .next-button {
+      margin-top: 20px;
+      padding: 15px;
+      background: black;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">안녕하세요 어르신!</div>
+    <div class="subheader">좋은 하루 보내셨나요?</div>
+    
+    <div class="section-box">
+      <div class="section-title">오늘은 며칠인가요?</div>
+      <div class="date-inputs">
+        <input type="text" placeholder="2024" id="year" />
+        <input type="text" placeholder="01" id="month" />
+        <input type="text" placeholder="01" id="day" />
+      </div>
+      <div class="day-control">
+        <span id="day-text">월</span>
+        <button id="prev-day">▲</button>
+        <button id="next-day">▼</button>
+      </div>
+    </div>
+    
+    <div class="section-box">
+      <div class="section-title">어디에 살고계신가요?</div>
+      <div class="location-input">
+        <input type="text" placeholder="충청남도 천안시 동남구" id="location" />
+      </div>
+    </div>
+    
+    <div class="section-box">
+      <div class="section-title">오늘의 날씨는 어땠나요?</div>
+      <div class="weather-options">
+        <div class="weather-option" data-weather="맑은">
+          <img src="sun.png" alt="맑은날" />
+          <span>맑은날</span>
+        </div>
+        <div class="weather-option" data-weather="비오는">
+          <img src="rain.png" alt="비" />
+          <span>비</span>
+        </div>
+        <div class="weather-option" data-weather="눈오는">
+          <img src="snow.png" alt="눈" />
+          <span>눈</span>
+        </div>
+        <div class="weather-option" data-weather="흐린">
+          <img src="cloud.png" alt="흐림" />
+          <span>흐림</span>
+        </div>
+      </div>
+      <div class="selected-weather" id="selected-weather">오늘은 맑은 날 입니다</div>
+    </div>
+    
+    <button class="next-button">다음페이지</button>
+  </div>
+
+  <script>
+    const days = ["월", "화", "수", "목", "금", "토", "일"];
+    let currentDayIndex = 0;
+
+    const dayText = document.getElementById("day-text");
+    const prevDayButton = document.getElementById("prev-day");
+    const nextDayButton = document.getElementById("next-day");
+
+    prevDayButton.addEventListener("click", () => {
+      currentDayIndex = (currentDayIndex - 1 + days.length) % days.length;
+      dayText.textContent = days[currentDayIndex];
+    });
+
+    nextDayButton.addEventListener("click", () => {
+      currentDayIndex = (currentDayIndex + 1) % days.length;
+      dayText.textContent = days[currentDayIndex];
+    });
+
+    const weatherOptions = document.querySelectorAll(".weather-option");
+    const selectedWeather = document.getElementById("selected-weather");
+
+    weatherOptions.forEach(option => {
+      option.addEventListener("click", () => {
+        const weather = option.dataset.weather;
+        selectedWeather.textContent = `오늘은 ${weather} 날 입니다`;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변비에 좋은 식품 맞추기</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+    .container {
+      width: 1100px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 40px;
+    }
+    .problem {
+      flex: 2;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 24px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .image-box {
+      width: 180px;
+      height: 120px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .text-box {
+      width: 180px;
+      height: 40px;
+      margin-top: 10px;
+      background-color: #f1f1f1;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .choices {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* 세로 가운데 정렬 */
+      text-align: center;
+    }
+    .choices-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .choice-item {
+      background-color: black;
+      color: white;
+      width: 180px;
+      height: 40px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .button-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .button {
+      width: 45%;
+      padding: 20px;
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 문제 영역 -->
+    <div class="problem">
+      <div class="title">첫 번째 문제</div>
+      <div class="subtitle">앞서 기억해 둔 변비에 좋은 식품을<br>보기에 있는 것들로 맞춰주세요.</div>
+      <div class="grid">
+        <!-- 식품 1 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="" alt="식품 1" />
+          </div>
+          <div class="text-box">-</div>
+        </div>
+        <!-- 식품 2 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="" alt="식품 2" />
+          </div>
+          <div class="text-box">-</div>
+        </div>
+        <!-- 식품 3 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="" alt="식품 3" />
+          </div>
+          <div class="text-box">-</div>
+        </div>
+        <!-- 식품 4 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="" alt="식품 4" />
+          </div>
+          <div class="text-box">-</div>
+        </div>
+        <!-- 식품 5 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="" alt="식품 5" />
+          </div>
+          <div class="text-box">-</div>
+        </div>
+        <!-- 식품 6 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="" alt="식품 6" />
+          </div>
+          <div class="text-box">-</div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="button">채점하기</button>
+        <button class="button">다음페이지</button>
+      </div>
+    </div>
+    <!-- 보기 영역 -->
+    <div class="choices">
+      <div class="choices-title">보기</div>
+      <div class="choices-grid">
+        <div class="choice-item">보기 1</div>
+        <div class="choice-item">보기 2</div>
+        <div class="choice-item">보기 3</div>
+        <div class="choice-item">보기 4</div>
+        <div class="choice-item">보기 5</div>
+        <div class="choice-item">보기 6</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
