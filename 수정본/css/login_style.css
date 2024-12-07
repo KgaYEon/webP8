@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+.container {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.header {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.subheader {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+.section-box {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.date-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.date-inputs input {
+  width: 30%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+.day-control {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.day-control button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  background: #fff;
+}
+.day-control span {
+  font-size: 16px;
+  font-weight: bold;
+}
+.location-input input {
+  width: 90%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+.weather-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+.weather-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.weather-option img {
+  width: 40px;
+  height: 40px;
+}
+.weather-option span {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.selected-weather {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #444;
+  font-weight: bold;
+}
+.next-button {
+  margin-top: 20px;
+  padding: 15px;
+  background: black;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
