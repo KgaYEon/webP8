@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변비에 좋은 식품 맞추기</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f9f9f9;
+    }
+    .container {
+      width: 1100px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 40px;
+    }
+    .problem {
+      flex: 2;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 24px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .image-box {
+      width: 180px;
+      height: 120px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .text-box {
+      width: 180px;
+      height: 40px;
+      margin-top: 10px;
+      background-color: #f1f1f1;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px dashed transparent;
+    }
+    .text-box.drop-zone {
+      border-color: #007bff;
+    }
+    .choices {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .choices-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 50px;
+      margin-top: 40px;
+    }
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .choice-item {
+      background-color: black;
+      color: white;
+      width: 180px;
+      height: 40px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .choice-item.dragging {
+      opacity: 0.5;
+    }
+    .button-container {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .button {
+      width: 230px;
+      padding: 15px;
+      background-color: black;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .button:disabled {
+      background-color: #d3d3d3;
+      cursor: not-allowed;
+    }
+    .button:hover:not(:disabled) {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 문제 영역 -->
+    <div class="problem">
+      <div class="title">첫 번째 문제</div>
+      <div class="subtitle">앞서 기억해 둔 변비에 좋은 식품을<br>보기에 있는 것들로 맞춰주세요.</div>
+      <div class="grid">
+        <!-- 6개의 빈칸 -->
+        <div class="item">
+          <div class="image-box">
+            <img src="IMAGE/APPLE.jpg" alt="식품 1" />
+          </div>
+          <div class="text-box drop-zone" data-id="1"></div>
+        </div>
+        <div class="item">
+          <div class="image-box">
+            <img src="IMAGE/FLOWER.jpg" alt="식품 2" />
+          </div>
+          <div class="text-box drop-zone" data-id="2"></div>
+        </div>
+        <div class="item">
+          <div class="image-box">
+            <img src="IMAGE/ABOKADO.jpg" alt="식품 3" />
+          </div>
+          <div class="text-box drop-zone" data-id="3"></div>
+        </div>
+        <div class="item">
+          <div class="image-box">
+            <img src="IMAGE/KARE.jpg" alt="식품 4" />
+          </div>
+          <div class="text-box drop-zone" data-id="4"></div>
+        </div>
+        <div class="item">
+          <div class="image-box">
+            <img src="IMAGE/MELON.jpg" alt="식품 5" />
+          </div>
+          <div class="text-box drop-zone" data-id="5"></div>
+        </div>
+        <div class="item">
+          <div class="image-box">
+            <img src="IMAGE/BLUEBERRY.jpg" alt="식품 6" />
+          </div>
+          <div class="text-box drop-zone" data-id="6"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 보기 영역 -->
+    <div class="choices">
+      <div class="choices-title">보기</div>
+      <div class="choices-grid">
+        <div class="choice-item">사과</div>
+        <div class="choice-item">블루베리</div>
+        <div class="choice-item">아보카도</div>
+        <div class="choice-item">해바라기씨</div>
+        <div class="choice-item">카레</div>
+        <div class="choice-item">멜론</div>
+      </div>
+      <div class="button-container">
+        <button class="button check">채점하기</button>
+        <button class="button next" disabled>다음페이지</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const choices = document.querySelectorAll('.choice-item');
+    const dropZones = document.querySelectorAll('.text-box');
+    const checkButton = document.querySelector('.check');
+    const nextButton = document.querySelector('.next');
+    const correctAnswers = ['사과', '블루베리', '아보카도', '해바라기씨', '카레', '멜론'];
+  
+    // 드래그 앤 드롭 관련한거
+    choices.forEach((choice) => {
+      choice.setAttribute('draggable', true);
+  
+      choice.addEventListener('dragstart', (event) => {
+        event.dataTransfer.setData('text/plain', choice.textContent);
+        choice.classList.add('dragging');
+      });
+  
+      choice.addEventListener('dragend', () => {
+        choice.classList.remove('dragging');
+      });
+    });
+  
+    dropZones.forEach((zone) => {
+      zone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        zone.classList.add('drag-over');
+      });
+  
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('drag-over');
+      });
+  
+      zone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const droppedText = event.dataTransfer.getData('text/plain');
+        zone.textContent = droppedText; 
+        zone.classList.remove('drag-over');
+      });
+    });
+  
+    // 채점하기 버튼
+    checkButton.addEventListener('click', () => {
+      let score = 0;
+      const usedAnswers = []; 
+  
+      dropZones.forEach((zone) => {
+        const droppedItem = zone.textContent.trim();
+        if (correctAnswers.includes(droppedItem) && !usedAnswers.includes(droppedItem)) {
+          score++;
+          usedAnswers.push(droppedItem); 
+        }
+      });
+  
+      if (score === correctAnswers.length) {
+        alert('정답입니다! 다음페이지로 넘어가주세요!');
+        checkButton.disabled = true; 
+        nextButton.disabled = false; 
+      } else {
+        alert(`오답입니다. ${score}개 정답입니다!`);
+      }
+    });
+  
+    // 다음페이지 버튼
+    nextButton.addEventListener('click', () => {
+      alert('다음 페이지로 이동합니다.');
+      
+      location.href = '문제2.html';
+    });
+
+  
+  </script>  
+</body>
+</html>
