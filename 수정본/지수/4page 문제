@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>변비에 좋은 식품 작성</title> 
+    <style>
+        /* 기본 스타일 설정 */
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0; 
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #f8f8f8; 
+        }
+        .container {
+            width: 80%; 
+            background: #fff; 
+            border: 1px solid #ccc; 
+            padding: 40px;             
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);         }
+        h1 {
+            font-size: 24px; 
+            margin-bottom: 30px; 
+            text-align: center; 
+        }
+        .input-group {
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            margin-bottom: 30px; 
+        }
+        .input-group input {
+            width: 100%; 
+            height: 50px;
+            border: 2px solid #ccc; 
+            border-radius: 25px; 
+            padding: 0 20px; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+        }
+        .buttons {
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+        }
+        .buttons button {
+            padding: 15px 30px; 
+            background-color: black; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 18px; 
+            border-radius: 5px; 
+        }
+        .buttons button:hover {
+            background-color: #444; 
+        }
+        .buttons button:disabled {
+            background-color: #d3d3d3; 
+            cursor: not-allowed; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>네 번째 문제<br>앞서 기억한 변비에 좋은 식품을 6개 적으세요</h1>
+        <div class="input-group">
+            <input type="text" placeholder="식품 1">
+            <input type="text" placeholder="식품 2">
+            <input type="text" placeholder="식품 3">
+            <input type="text" placeholder="식품 4">
+            <input type="text" placeholder="식품 5"> 
+            <input type="text" placeholder="식품 6"> 
+        </div>
+        <div class="buttons">
+            <button class="check">채점하기</button> <!-- 채점하기 버튼 -->
+            <button class="next" disabled>다음페이지</button> <!-- 비활성화된 다음페이지 버튼 -->
+        </div>
+    </div>
+    <script>
+        const checkButton = document.querySelector('.check'); 
+        const nextButton = document.querySelector('.next'); 
+        const inputs = document.querySelectorAll('.input-group input'); // 모든 입력 칸 참조
+        const correctAnswers = ['사과', '블루베리', '아보카도', '해바라기씨', '카레', '멜론']; // 정답 배열
+
+        // 채점하기 버튼 클릭 이벤트
+        checkButton.addEventListener('click', () => {
+            let score = 0; 
+            const usedAnswers = []; // 중복 정답 방지를 위한 배열
+            const userAnswers = Array.from(inputs).map(input => input.value.trim()); // 사용자가 입력한 값 배열
+
+            userAnswers.forEach(answer => {
+                if (correctAnswers.includes(answer) && !usedAnswers.includes(answer)) {
+                    score++; 
+                    usedAnswers.push(answer); // 사용된 정답 기록
+                }
+            });
+
+            // 정답 개수와 메시지 표시
+            if (score === correctAnswers.length) {
+                alert(`정답입니다! 모든 정답(${score}개)을 맞췄습니다. 다음페이지로 넘어가세요.`);
+                checkButton.disabled = true; // 채점하기 버튼 비활성화
+                nextButton.disabled = false; // 다음페이지 버튼 활성화
+            } else {
+                alert(`오답입니다. 맞춘 정답: ${score}개. 다시 확인해보세요.`);
+            }
+        });
+
+        // 다음페이지 버튼 클릭 이벤트
+        nextButton.addEventListener('click', () => {
+            alert('다음 페이지로 이동합니다.');
+            location.href = '문제5.html'; 
+        });
+    </script>
+</body>
+</html>
