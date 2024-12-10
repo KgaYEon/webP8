@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속담 연결</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .container {
+            width: 80%;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .grid {
+            display: flex;
+            justify-content: space-around;
+        }
+        .grid .column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .grid .column .box {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .grid .column .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .grid .column .box .dot {
+            width: 15px;
+            height: 15px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .grid .column .box .dot.left {
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .grid .column .box .dot.right {
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            z-index: 10;
+        }
+        .buttons button {
+            padding: 15px 30px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .buttons button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .buttons button:hover:enabled {
+            background-color: #444;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none; 
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="connectionCanvas"></canvas>
+        <h1>속담 연결 문제</h1>
+        <div class="grid">
+            <div class="column">
+                <div class="box">
+                    <img src="IMAGE/sicklep.png" alt="그림 1">
+                    <div class="dot right" data-id="1"></div>
+                </div>
+                <div class="box">
+                    <img src="IMAGE/tigerp.png" alt="그림 2">
+                    <div class="dot right" data-id="2"></div>
+                </div>
+                <div class="box">
+                    <img src="IMAGE/thunp.png" alt="그림 3">
+                    <div class="dot right" data-id="3"></div>
+                </div>
+                <div class="box">
+                    <img src="IMAGE/cowp.png" alt="그림 4">
+                    <div class="dot right" data-id="4"></div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box">
+                    <img src="IMAGE/cow.PNG" alt="그림 5">
+                    <div class="dot left" data-id="5"></div>
+                </div>
+                <div class="box">
+                    <img src="IMAGE/thun.PNG" alt="그림 6">
+                    <div class="dot left" data-id="6"></div>
+                </div>
+                <div class="box">
+                    <img src="IMAGE/tiger.PNG" alt="그림 7">
+                    <div class="dot left" data-id="7"></div>
+                </div>
+                <div class="box">
+                    <img src="IMAGE/sickle.PNG" alt="그림 8">
+                    <div class="dot left" data-id="8"></div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="checkAnswer">채점하기</button>
+            <button id="resetConnections">초기화</button>
+            <button id="nextPage" disabled>다음페이지</button>
+        </div>
+    </div>
+
+    <script src="./Q3js.js"></script>
+</body>
+</html>
