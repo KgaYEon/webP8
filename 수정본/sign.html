@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    .signup-container {
+      width: 500px;
+      padding: 40px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .signup-container h1 {
+      font-size: 30px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .signup-container input {
+      width: 95%;
+      padding: 15px;
+      margin: 15px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 18px;
+    }
+
+    .signup-container button {
+      width: 95%;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .signup-container button:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>회원가입</h1>
+    <form>
+      <input type="text" placeholder="아이디" required>
+      <input type="password" placeholder="비밀번호" required>
+      <input type="tel" placeholder="보호자 전화번호" required>
+      <input type="text" placeholder="집 주소" required>
+      <button type="submit">회원가입 하기</button>
+    </form>
+  </div>
+</body>
+</html>
