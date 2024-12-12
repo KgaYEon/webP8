@@ -109,9 +109,9 @@
       cursor: pointer;
       width: 100%;
     }
-    .goto-next-page {
-      display: none; /*처음에는 비활성화*/ 
-      background-color: #000000;
+    .goto-next-page:disabled {
+      background-color: gray;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -156,7 +156,7 @@
     </div>
     
     <button class="next-button">날짜 및 날씨 확인하기</button>
-    <button class="goto-next-page">다음 페이지로 이동</button>
+    <button class="goto-next-page"disabled>다음 페이지로 이동</button>
   </div>
 
   <script>
@@ -250,7 +250,7 @@
         alert(`오늘의 날씨와 일치합니다! ${place}의 날씨는 '${currentWeather}'입니다.`);
 
         // 다음 페이지 이동 버튼 활성화
-        document.querySelector(".goto-next-page").style.display = "block";
+        document.querySelector(".goto-next-page").disabled = false;
       } else {
         alert(`틀렸습니다. ${place}시 의 날씨는 '${currentWeather}'입니다.`);
       }
