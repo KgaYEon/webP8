@@ -1,90 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/login_style.css"/>
-  <title>안녕하세요 어르신!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/문제2_style.css" />
+    <title>집 비교 문제 풀기</title>
 </head>
+
 <body>
-  <div class="container">
-    <div class="header">안녕하세요 어르신!</div>
-    <div class="subheader">좋은 하루 보내셨나요?</div>
-    
-    <div class="section-box">
-      <div class="section-title">오늘은 며칠인가요?</div>
-      <div class="date-inputs">
-        <input type="text" placeholder="2024" id="year" />
-        <input type="text" placeholder="01" id="month" />
-        <input type="text" placeholder="01" id="day" />
-      </div>
-      <div class="day-control">
-        <span id="day-text">월</span>
-        <button id="prev-day">▲</button>
-        <button id="next-day">▼</button>
-      </div>
+    <div class="container">
+        <!-- 문제 영역 -->
+        <div class="problem">
+            <div class="title">두 번째 문제</div>
+            <div class="subtitle">다음의 집들을 비교하며 문제를 푸세요.</div>
+
+            <!-- 이미지 표시 -->
+            <div class="image-grid">
+                <div class="image-box" id="image1"><img src="../IMG/A빌라.png" /></div>
+                <div class="image-box" id="image2"><img src="../IMG/B빌라.png" /></div>
+                <div class="image-box" id="image3"><img src="../IMG/C빌라.png" /></div>
+            </div>
+
+            <!-- 문제 -->
+            <div class="question">
+                <p>1. 아들 집과 지하철 역이 가장 먼 곳은?</p>
+                <div class="answer-input">
+                    <input id="Answer1" type="text" placeholder="정답을 입력하세요">
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. 반려견과 사는 동생과 함께 살 수 없는 곳은?</p>
+                <div class="answer-input">
+                    <input id="Answer2" type="text" placeholder="정답을 입력하세요">
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. 예산은 1억 원이고, 대출로 4천을 받을 수 있을 때 전세로 살 수 있는 곳은?</p>
+                <div class="answer-input">
+                    <input id="Answer3" type="text" placeholder="정답을 입력하세요">
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. 월세로 계약하려고 합니다. 월세가 가장 낮은 집은?</p>
+                <div class="answer-input">
+                    <input id="Answer4" type="text" placeholder="정답을 입력하세요">
+                </div>
+            </div>
+
+            <!-- 버튼 -->
+            <div class="button-container">
+                <button class="check_button">채점하기</button>
+                <button class="next_button" disabled>다음 페이지</button>
+            </div>
+        </div>
     </div>
-    
-    <div class="section-box">
-      <div class="section-title">어디에 살고계신가요?</div>
-      <div class="location-input">
-        <input type="text" placeholder="충청남도 천안시 동남구" id="location" />
-      </div>
-    </div>
-    
-    <div class="section-box">
-      <div class="section-title">오늘의 날씨는 어땠나요?</div>
-      <div class="weather-options">
-        <div class="weather-option" data-weather="맑은">
-          <img src="sun.png" alt="맑은날" />
-          <span>맑은날</span>
-        </div>
-        <div class="weather-option" data-weather="비오는">
-          <img src="rain.png" alt="비" />
-          <span>비</span>
-        </div>
-        <div class="weather-option" data-weather="눈오는">
-          <img src="snow.png" alt="눈" />
-          <span>눈</span>
-        </div>
-        <div class="weather-option" data-weather="흐린">
-          <img src="cloud.png" alt="흐림" />
-          <span>흐림</span>
-        </div>
-      </div>
-      <div class="selected-weather" id="selected-weather">오늘은 맑은 날 입니다</div>
-    </div>
-    
-    <button class="next-button">다음페이지</button>
-  </div>
 
-  <script>
-    const days = ["월", "화", "수", "목", "금", "토", "일"];
-    let currentDayIndex = 0;
+    <script src="../JSfile/문제2.js"></script>
 
-    const dayText = document.getElementById("day-text");
-    const prevDayButton = document.getElementById("prev-day");
-    const nextDayButton = document.getElementById("next-day");
 
-    prevDayButton.addEventListener("click", () => {
-      currentDayIndex = (currentDayIndex - 1 + days.length) % days.length;
-      dayText.textContent = days[currentDayIndex];
-    });
-
-    nextDayButton.addEventListener("click", () => {
-      currentDayIndex = (currentDayIndex + 1) % days.length;
-      dayText.textContent = days[currentDayIndex];
-    });
-
-    const weatherOptions = document.querySelectorAll(".weather-option");
-    const selectedWeather = document.getElementById("selected-weather");
-
-    weatherOptions.forEach(option => {
-      option.addEventListener("click", () => {
-        const weather = option.dataset.weather;
-        selectedWeather.textContent = `오늘은 ${weather} 날 입니다`;
-      });
-    });
-  </script>
 </body>
+
 </html>
