@@ -55,13 +55,13 @@
 <body>
   <div class="box">
     <h1>수고하셨습니다!</h1>
-    <p id="quote">"오늘의 한마디"</p>
+    <p id="wordsthanks">"오늘의 한마디"</p>
     
     <a href="로그인페이지.html" class="button">메인으로</a>
   </div>
 
   <script>
-    // 한마디 문구 
+    // 한마디 문구 배열
     const wordsthanks = [
       "좋은 하루 되세요!",
       "내일도 이용해 주세요!",
@@ -70,9 +70,9 @@
       "항상 건강하세요!"
     ];
 
-    // 랜덤 문구 설정
-    const randrist = wordsthanks[Math.floor(Math.random() * rist.length)];
-    document.getElementById("rist").innerText = `"${random}"`;
+    // 랜덤 문구 선택
+    const randomQuote = wordsthanks[Math.floor(Math.random() * wordsthanks.length)];
+    document.getElementById("wordsthanks").innerText = `"${randomQuote}"`;
   </script>
 </body>
 </html>
