@@ -55,5 +55,5 @@ checkButton.addEventListener('click', () => {
 
 nextButton.addEventListener('click', () => {
   alert('다음 페이지로 이동합니다.');
-  location.href = '완성본/김동영/김동영_문제2.html';
+  location.href = './완성본/김동영/김동영_문제2.html';
 });
