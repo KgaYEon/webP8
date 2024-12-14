@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안녕하세요 어르신!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subheader {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .section-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .date-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .date-inputs input {
+            width: 30%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .day-control {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        .day-control span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .weather-options {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .weather-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .weather-option img {
+            width: 40px;
+            height: 40px;
+            border: none;
+        }
+
+        .weather-option span {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .selected-weather {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .next-button,
+        .goto-next-page {
+            margin-top: 20px;
+            padding: 15px;
+            background: black;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .goto-next-page:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">안녕하세요 어르신!</div>
+        <div class="subheader">좋은 하루 보내셨나요?</div>
+
+        <div class="section-box">
+            <div class="section-title">오늘은 며칠인가요?</div>
+            <div class="date-inputs">
+                <input type="text" placeholder="2024" id="year" />
+                <input type="text" placeholder="01" id="month" />
+                <input type="text" placeholder="01" id="day" />
+            </div>
+            <div class="day-control">
+                <span id="day-text">월</span>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">오늘의 날씨는 어땠나요?</div>
+            <div class="weather-options">
+                <div class="weather-option" data-weather="맑은">
+                    <img src="png/맑음.png" alt="맑은날" />
+                    <span>맑은날</span>
+                </div>
+                <div class="weather-option" data-weather="비오는">
+                    <img src="png/비.png" alt="비" />
+                    <span>비</span>
+                </div>
+                <div class="weather-option" data-weather="눈오는">
+                    <img src="png/눈.png" alt="눈" />
+                    <span>눈</span>
+                </div>
+                <div class="weather-option" data-weather="흐림">
+                    <img src="png/흐림.png" alt="흐림" />
+                    <span>흐림</span>
+                </div>
+            </div>
+            <div class="selected-weather" id="selected-weather">오늘은 맑은 날 입니다</div>
+        </div>
+
+        <button class="next-button">날짜 및 날씨 확인하기</button>
+        <button class="goto-next-page" disabled>다음 페이지로 이동</button>
+    </div>
+
+    <script>
+        const API_KEY = ''; 
+
+        const days = ["일", "월", "화", "수", "목", "금", "토"];
+        const today = new Date();
+        const todayDay = days[today.getDay()];
+
+        let userSelectedWeather;
+
+        document.getElementById("day-text").textContent = `오늘 요일: ${todayDay}`;
+
+        const weatherOption = document.querySelectorAll(".weather-option");
+
+        weatherOption.forEach(option => {
+            option.addEventListener("click", () => {
+                userSelectedWeather = option.dataset.weather; 
+                document.getElementById("selected-weather").textContent = `오늘은 ${userSelectedWeather} 날 입니다`;
+            });
+        });
+
+        document.querySelector(".next-button").addEventListener("click", () => {
+            const yearInput = parseInt(document.getElementById("year").value, 10);
+            const monthInput = parseInt(document.getElementById("month").value, 10);
+            const dayInput = parseInt(document.getElementById("day").value, 10);
+
+            const isDateCorrect = (
+                yearInput === today.getFullYear() &&
+                monthInput === (today.getMonth() + 1) &&
+                dayInput === today.getDate()
+            );
+
+            if (!isDateCorrect) {
+                alert("입력한 날짜가 오늘 날짜와 일치하지 않습니다.");
+                return;
+            }
+
+            if (!userSelectedWeather) {
+                alert("날씨를 선택해주세요!");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error);
+
+            function success(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                getWeather(latitude, longitude); 
+            }
+
+            function error() {
+                alert("현재 위치를 가져올 수 없습니다.");
+            }
+        });
+
+        function getWeather(lat, lon) {
+            fetch(
+                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
+            )
+                .then(response => response.json())
+                .then(data => {
+                    const currentWeather = mapWeatherToCondition(data.weather[0].main);
+                    const place = data.name;
+                    compareWeather(currentWeather, place);
+                })
+                .catch(() => {
+                    alert("날씨 정보를 가져오는 데 실패했습니다.");
+                });
+        }
+
+        function mapWeatherToCondition(weather) {
+            switch (weather.toLowerCase()) {
+                case "clear": return "맑은";
+                case "rain": return "비오는";
+                case "snow": return "눈오는";
+                case "clouds": return "흐림";
+                default: return "알 수 없음";
+            }
+        }
+
+        function compareWeather(currentWeather, place) {
+            if (currentWeather === userSelectedWeather) {
+                alert(`오늘의 날씨와 일치합니다! ${place}의 날씨는 '${currentWeather}'입니다.`);
+
+                document.querySelector(".goto-next-page").disabled = false;
+            } else {
+                alert(`틀렸습니다. ${place}시 의 날씨는 '${currentWeather}'입니다.`);
+            }
+        }
+
+        document.querySelector(".goto-next-page").addEventListener("click", () => {
+            alert("다음 페이지로 이동합니다.");
+            location.href = "../김가연/김가연_설명.html";
+        });
+    </script>
+</body>
+
+</html>

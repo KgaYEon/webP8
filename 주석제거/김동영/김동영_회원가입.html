@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/SignUp_style.css" />
+    <title>회원가입 페이지</title>
+</head>
+
+<body>
+    <div class="signup-container">
+        <h1>회원가입</h1>
+        <form>
+            <input type="text" id="SignUpEmail" placeholder="이메일" required>
+            <input type="password" id="SignUpPassword" placeholder="비밀번호" required>
+            <button type="submit" id="SignUpButton">회원가입 하기</button>
+        </form>
+        <button id="SignInButton" class="SignInButton">로그인하러 가기</button>
+    </div>
+
+
+    <script src="./JavaScript/SignUp.js" type="module"></script>
+    <script>
+        document.getElementById('SignInButton').addEventListener('click', () => {
+            location.replace('../김동영_index.html');
+        });
+    </script>
+
+
+</body>
+</html>
